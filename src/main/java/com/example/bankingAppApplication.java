@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example;
 
+import com.example.persistence.domain.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,8 +14,9 @@ public class bankingAppApplication {
 		
 		ApplicationContext ac = SpringApplication.run(bankingAppApplication.class, args);
 		AccountService service = ac.getBean(AccountService.class);
-		service.createAccount(new Account(""))
-	
+		service.createAccount(new Account("Maria", "Pantsiou"));
+		System.out.println(service.findAll());
+		
 	}
 
 }

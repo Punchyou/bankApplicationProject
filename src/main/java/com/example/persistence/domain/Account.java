@@ -20,11 +20,10 @@ public class Account {
 		super();
 	}
 	
-	public Account(String firstname, String lastname, Long accountNumber) {
+	public Account(String firstname, String lastname) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.accountNumber = accountNumber;
 	}
 	
 	

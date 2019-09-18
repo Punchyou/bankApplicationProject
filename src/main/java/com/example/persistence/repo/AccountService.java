@@ -1,6 +1,8 @@
 package com.example.persistence.repo;
 
+import java.math.*;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,12 @@ public class AccountService {
 	@Autowired
 	private AccountRepo repo;
 	
+	@Autowired
+	private AccountNumGenService numGen;
 	
 	public Account createAccount(Account account) {
+		System.out.println(account.getId());
+		numGen.genNumber(account);
 		return this.repo.save(account);
 	}
 	
@@ -37,5 +43,4 @@ public class AccountService {
 		return this.repo.existsById(id);
 	}
 		
-		
-	}
+}
