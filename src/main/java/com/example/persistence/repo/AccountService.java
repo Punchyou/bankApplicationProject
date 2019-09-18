@@ -19,9 +19,13 @@ public class AccountService {
 	@Autowired
 	private AccountNumGenService numGen;
 	
+	@Autowired
+	private PrizeGenService prizeGen;
+	
 	public Account createAccount(Account account) {
-		System.out.println(account.getId());
 		numGen.genNumber(account);
+		account.setPrizeNumber(prizeGen.genPrize(account));
+		
 		return this.repo.save(account);
 	}
 	

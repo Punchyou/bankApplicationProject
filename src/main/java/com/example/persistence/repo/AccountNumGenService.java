@@ -9,7 +9,6 @@ import com.example.persistence.domain.Account;
 public class AccountNumGenService {
 	
 	public void genNumber(Account account) {
-		System.out.println(account.getId());
 		Random rand = new Random();
 		int num = rand.nextInt(3);
 		if(num == 0) account.setAccountNumber(Math.round(Math.random()*1000000));
