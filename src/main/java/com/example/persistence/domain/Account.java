@@ -14,6 +14,7 @@ public class Account {
 	private String firstname;
 	private String lastname;
 	private Long accountNumber;
+	private String prizeNumber;
 //	private String email;
 
 	public Account(){
@@ -52,10 +53,18 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 
+	public String getPrizeNumber() {
+		return prizeNumber;
+	}
+
+	public void setPrizeNumber(String prizeNumber) {
+		this.prizeNumber = prizeNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", accountNumber="
-				+ accountNumber + "]";
+				+ accountNumber + ", prizeNumber=" + prizeNumber + "]";
 	}
 	
 
