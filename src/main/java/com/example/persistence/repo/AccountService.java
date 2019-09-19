@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.persistence.domain.Account;
@@ -22,29 +23,30 @@ public class AccountService {
 	@Autowired
 	private PrizeGenService prizeGen;
 	
-	public Account createAccount(Account account) {
+	
+	public ResponseEntity<Account> createAccount(Account account) {
 		numGen.genNumber(account);
 		account.setPrizeNumber(prizeGen.genPrize(account));
 		
-		return this.repo.save(account);
+		return ResponseEntity.ok(this.repo.save(account));
 	}
 	
 	// read method
-	public List<Account> findAll(){
-		return this.repo.findAll();
+	public ResponseEntity<List<Account>> findAll(){
+		return ResponseEntity.ok(this.repo.findAll());
 	}
 	
-	public Account updateAccount(Account account, Long id) {
+	public ResponseEntity<Account> updateAccount(Account account, Long id) {
 		Account toUpdate = this.repo.findById(id).get();
 		toUpdate.setFirstname(account.getFirstname());
 		toUpdate.setLastname(account.getLastname());
-		toUpdate.setAccountNumber(account.getAccountNumber());
-		return this.repo.save(toUpdate);
+//		toUpdate.setAccountNumber(account.getAccountNumber());
+		return ResponseEntity.ok(this.repo.save(toUpdate));
 	}
 	
-	public boolean deleteAccount(Long id) {
+	public ResponseEntity<Boolean> deleteAccount(Long id) {
 		this.repo.deleteById(id);
-		return this.repo.existsById(id);
+		return ResponseEntity.ok(this.repo.existsById(id));
 	}
 		
 }
